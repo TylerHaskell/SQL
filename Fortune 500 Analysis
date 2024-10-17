@@ -63,7 +63,7 @@ VALUES
 
 -- View entire dataset
 SELECT *
-FROM fortune_companies
+FROM fortune_companies;
 
 -- Amount of companies per PTO ranking
 SELECT COUNT(*),
@@ -73,22 +73,22 @@ WHEN paid_time_off_days >= 10 THEN "Below Average PTO (10-14 days)"
 ELSE "Poor PTO (9 or less days)" END AS "pto_standards"
 FROM fortune_companies
 GROUP BY pto_standards
-ORDER BY paid_time_off_days DESC
+ORDER BY paid_time_off_days DESC;
 
 -- Industries with an average of 20 or more PTO days
 SELECT industry, AVG(paid_time_off_days) AS average_pto_days 
 FROM fortune_companies
 GROUP BY industry
 HAVING average_pto_days >= 20
-ORDER BY average_pto_days DESC
+ORDER BY average_pto_days DESC;
 
 -- Companies with 20 or more PTO days and has healthcare benefits
 SELECT *
 FROM fortune_companies
-WHERE paid_time_off_days >= 20 AND healthcare_benefits = 1
+WHERE paid_time_off_days >= 20 AND healthcare_benefits = 1;
 
 -- Total number of employees per industry
 SELECT industry, SUM(employees) AS total_employees_in_industry
 FROM fortune_companies
 GROUP BY industry
-ORDER BY total_employees_in_industry DESC
+ORDER BY total_employees_in_industry DESC;
